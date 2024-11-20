@@ -1,0 +1,35 @@
+*{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    text-decoration: none;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #242da0;
+    padding: 10px;
+}
+.nav{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    margin-right: 10px;
+}
+.nav-link{
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+}
+.nav-link a{
+    color: white;
+    text-decoration: none;
+}
+.logo{
+    align-content: center;
+    margin-left: 10px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
