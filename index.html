@@ -19,7 +19,16 @@
                 <li class="nav-link"><a href="#">Contact</a></li>
                 <li class="nav-link"><a href="#" class="btn-inscription">Se Connecter</a></li> 
             </ul>
+            <img class="image-menu" src="images/option.png" alt="Menu hamberger">
         </nav>
     </header>
 </body>
+<script>
+    const menu = document.querySelector('.image-menu');
+    const nav = document.querySelector('.nav');
+    
+    menu.addEventListener('click', () => {
+        nav.classList.toggle('show');
+    });
+</script>
 </html>
