@@ -47,13 +47,13 @@
 @media screen and (max-width: 768px){
     .nav{
         flex-direction: column;
+        display: none;
     }
    .nav-link{
-    width: 100%;
     text-align: center;
     padding: 20px;
     margin-bottom: 10px;
-    display: none;
+    
     }
    .image-menu{
     display: block;
@@ -61,8 +61,13 @@
     padding: 20px;
     cursor: pointer;
     }
-    .show{
-        margin-right: 0px;
+   .show{
+       display: block;
+        position: absolute;
+        margin-top: 79px;
+        background-color: gray;
+        width: 100%;
+        text-align: center;
+        margin-left: -50px;
     }
-}
-
+ }
