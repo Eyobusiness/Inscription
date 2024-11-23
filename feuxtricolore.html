@@ -1,98 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feu Tricolore</title>
+  <title>Challenge : Feu Tricolore</title>
+  <link rel="stylesheet" href="style.css">
+
   <style>
-    /* Style de base pour le feu tricolore */
+    /* Style global */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Conteneur du feu tricolore */
     .traffic-light {
       width: 100px;
       height: 300px;
       background-color: #333;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      border-radius: 10px;
       padding: 10px;
     }
 
-    .light {
+    /* Lumières */
+    .light-green {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: gray;
+      background-color: rgb(6, 170, 6);
+      opacity: 0.1; /* Lumière éteinte */
+      transition: opacity 0.5s ease;
     }
 
-    /* Lumières actives */
-    #red.active { background-color: red; }
-    #yellow.active { background-color: yellow; }
-    #green.active { background-color: green; }
+    .light-yellow {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: yellow;
+      opacity: 0.1; /* Lumière éteinte */
+      transition: opacity 0.5s ease;
+    }
 
-    /* Bouton de démarrage */
-    button {
-      margin-top: 20px;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
+    .light-red {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: red;
+      opacity: 0.3; /* Lumière éteinte */
+      transition: opacity 0.5s ease;
+    }
+
+    /* Animation des lumières */
+    @keyframes trafficCycle {
+      0%, 33% {
+        opacity: 1; /* Lumière active */
+      }
+      33.01%, 100% {
+        opacity: 0.1; /* Lumière éteinte */
+      }
+    }
+
+    /* Activer les lumières avec le cycle */
+    .green {
+      animation: trafficCycle 12s infinite;
+      animation-delay: 0s; /* Vert commence d'abord */
+    }
+
+    .yellow {
+      animation: trafficCycle 12s infinite;
+      animation-delay: 4s; /* Jaune commence après 4 secondes */
+    }
+
+    .red {
+      animation: trafficCycle 12s infinite;
+      animation-delay: 8s; /* Rouge commence après 8 secondes */
     }
   </style>
+
 </head>
+
 <body>
   <div class="traffic-light">
-    <div id="red" class="light"></div>
-    <div id="yellow" class="light"></div>
-    <div id="green" class="light"></div>
+    <div class="light-green green"></div>
+    <div class="light-yellow yellow"></div>
+    <div class="light-red red"></div>
   </div>
-  <button id="start">Démarrer</button>
-  <button id="stop">Arrêt</button>
-
-  <script>// Boutons et éléments de la page
-    const startButton = document.getElementById('start');
-    const stopButton = document.getElementById('stop');
-    
-    
-    // Liste des lumières et durées
-    const lights = [
-      { id: 'red', duration: 5000 },
-      { id: 'yellow', duration: 2000 },
-      { id: 'green', duration: 4000 }
-    ];
-    
-    let currentIndex = 0; // Lumière active
-    let interval; // Variable pour gérer l'arrêt
-    
-    // Fonction pour changer les lumières
-    function switchLight() {
-      // Éteindre toutes les lumières
-      document.querySelectorAll('.light').forEach(light => light.classList.remove('active'));
-    
-      // Activer la lumière courante
-      const currentLight = lights[currentIndex];
-      document.getElementById(currentLight.id).classList.add('active');
-    
-      // Passer à la lumière suivante après la durée
-      interval = setTimeout(() => {
-        currentIndex = (currentIndex + 1) % lights.length;
-        switchLight();
-      }, currentLight.duration);
-    }
-    
-    // Fonction pour arrêter le cycle
-    function stopTrafficLight() {
-      clearTimeout(interval); // Arrêter l'intervalle
-      document.querySelectorAll('.light').forEach(light => light.classList.remove('active'));
-    }
-    
-    // Événements des boutons
-    startButton.addEventListener('click', () => {
-      stopTrafficLight(); // Réinitialiser si le feu est déjà en cours
-      switchLight(); // Démarrer le cycle
-    });
-    
-    stopButton.addEventListener('click', stopTrafficLight);
-    
-    </script>
 </body>
+
 </html>
